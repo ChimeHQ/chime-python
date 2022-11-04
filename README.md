@@ -1,7 +1,7 @@
 [![License][license badge]][license]
 
 # chime-python
-A [Chime][chime] extension for Elixir.
+A [Chime][chime] extension for Python.
 
 ## Overview
 
