@@ -6,13 +6,12 @@ public final class PythonExtension {
 	private let lspService: LSPService
 
 	public init(host: any HostProtocol, processHostServiceName: String) {
-		let filter = LSPService.contextFilter(for: [.elixirSource])
+		let filter = LSPService.contextFilter(for: [.pythonScript])
 
 		self.lspService = LSPService(host: host,
 									 contextFilter: filter,
 									 executableName: "pylsp",
-									 processHostServiceName: processHostServiceName,
-									 logMessages: true)
+									 processHostServiceName: processHostServiceName)
 	}
 }
 
