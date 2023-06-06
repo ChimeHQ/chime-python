@@ -6,16 +6,19 @@ public final class PythonExtension {
 	private let lspService: LSPService
 
 	public init(host: any HostProtocol, processHostServiceName: String) {
-		let filter = LSPService.contextFilter(for: [.pythonScript])
-
 		self.lspService = LSPService(host: host,
-									 contextFilter: filter,
 									 executableName: "pylsp",
 									 processHostServiceName: processHostServiceName)
 	}
 }
 
 extension PythonExtension: ExtensionProtocol {
+	public var configuration: ExtensionConfiguration {
+		get async throws {
+			return ExtensionConfiguration(contentFilter: [.uti(.pythonScript)])
+		}
+	}
+
 	public func didOpenProject(with context: ProjectContext) async throws {
 		try await lspService.didOpenProject(with: context)
 	}
