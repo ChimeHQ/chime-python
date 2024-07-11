@@ -7,8 +7,10 @@ public final class PythonExtension {
 	private let lspService: LSPService
 
 	public init(host: any HostProtocol) {
-		self.lspService = LSPService(host: host,
-									 executableName: "pylsp")
+		self.lspService = LSPService(
+			host: host,
+			executableName: "pylsp"
+		)
 	}
 }
 
@@ -19,7 +21,7 @@ extension PythonExtension: ExtensionProtocol {
 		}
 	}
 	
-	public var applicationService: ApplicationService {
-		return lspService
+	public var applicationService: some ApplicationService {
+		lspService
 	}
 }
